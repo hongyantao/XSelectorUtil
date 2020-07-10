@@ -9,23 +9,21 @@ import android.support.annotation.Dimension;
 import android.support.annotation.IntDef;
 import android.support.annotation.StringDef;
 import android.view.View;
-import android.widget.TextView;
 
 import com.android.xselector.XSelector;
-import com.android.xselector.interfaces.ISelectorUtil;
+import com.android.xselector.interfaces.ISelector;
 import com.android.xselector.utils.XHelper;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-
 /**
- * 类名称：ShapeSelector
- * 创建者：Create by liujc
- * 创建时间：Create on 2018/4/14 16:41
- * 描述：选择器形状
+ * @author :liujc
+ * @date : 2020/4/30
+ * @Description : 选择器形状
  */
-public class ShapeSelector implements ISelectorUtil<Drawable, View> {
+
+public class ShapeSelector implements ISelector<Drawable, View> {
     static ShapeSelector mDevShape;
 
     //实线宽度 默认1px
@@ -656,7 +654,7 @@ public class ShapeSelector implements ISelectorUtil<Drawable, View> {
 
     @Override
     public void into(View view) {
-        if (isBackgroundColor && view instanceof TextView){ //针对selector作用在textview无效问题
+        if (isBackgroundColor){ //针对selector作用无效问题
             view.setClickable(true);
         }
         view.setBackground(createShape());
